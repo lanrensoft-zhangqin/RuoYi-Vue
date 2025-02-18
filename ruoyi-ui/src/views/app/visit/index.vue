@@ -39,8 +39,8 @@
         <el-form-item label="访问日期" prop="visitDate">
           <el-date-picker
             v-model="form.visitDate"
-            type="datetime"
-            value-format="yyyy-MM-dd HH:mm:ss"
+            type="date"
+            value-format="yyyy-MM-dd"
             placeholder="请选择访问日期"
             clearable
           />
