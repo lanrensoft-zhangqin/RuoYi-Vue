@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.BizVisitorMapper">
+    
+    <resultMap type="BizVisitor" id="BizVisitorResult">
+        <result property="id"    column="id"    />
+        <result property="uuid"    column="uuid"    />
+        <result property="name"    column="name"    />
+        <result property="phoneNumber"    column="phone_number"    />
+        <result property="workplace"    column="workplace"    />
+        <result property="idNumber"    column="id_number"    />
+        <result property="licensePlate"    column="license_plate"    />
+        <result property="parkingTime"    column="parking_time"    />
+        <result property="department"    column="department"    />
+        <result property="interviewee"    column="interviewee"    />
+        <result property="reason"    column="reason"    />
+        <result property="visitDate"    column="visit_date"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+        <result property="status"    column="status"    />
+    </resultMap>
+
+    <sql id="selectBizVisitorVo">
+        select id, uuid, name, phone_number, workplace, id_number, license_plate, parking_time, department, interviewee, reason, visit_date, del_flag, create_by, create_time, update_by, update_time, remark, status from biz_visitor
+    </sql>
+
+    <select id="selectBizVisitorList" parameterType="BizVisitor" resultMap="BizVisitorResult">
+        <include refid="selectBizVisitorVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="phoneNumber != null  and phoneNumber != ''"> and phone_number = #{phoneNumber}</if>
+            <if test="workplace != null  and workplace != ''"> and workplace = #{workplace}</if>
+            <if test="idNumber != null  and idNumber != ''"> and id_number = #{idNumber}</if>
+            <if test="licensePlate != null  and licensePlate != ''"> and license_plate = #{licensePlate}</if>
+            <if test="parkingTime != null "> and parking_time = #{parkingTime}</if>
+            <if test="department != null  and department != ''"> and department = #{department}</if>
+            <if test="interviewee != null  and interviewee != ''"> and interviewee = #{interviewee}</if>
+            <if test="reason != null  and reason != ''"> and reason = #{reason}</if>
+            <if test="visitDate != null "> and visit_date = #{visitDate}</if>
+            <if test="status != null "> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectBizVisitorById" parameterType="Long" resultMap="BizVisitorResult">
+        <include refid="selectBizVisitorVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertBizVisitor" parameterType="BizVisitor" useGeneratedKeys="true" keyProperty="id">
+        insert into biz_visitor
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uuid != null and uuid != ''">uuid,</if>
+            <if test="name != null and name != ''">name,</if>
+            <if test="phoneNumber != null">phone_number,</if>
+            <if test="workplace != null">workplace,</if>
+            <if test="idNumber != null">id_number,</if>
+            <if test="licensePlate != null">license_plate,</if>
+            <if test="parkingTime != null">parking_time,</if>
+            <if test="department != null">department,</if>
+            <if test="interviewee != null">interviewee,</if>
+            <if test="reason != null">reason,</if>
+            <if test="visitDate != null">visit_date,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+            <if test="status != null">status,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uuid != null and uuid != ''">#{uuid},</if>
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="phoneNumber != null">#{phoneNumber},</if>
+            <if test="workplace != null">#{workplace},</if>
+            <if test="idNumber != null">#{idNumber},</if>
+            <if test="licensePlate != null">#{licensePlate},</if>
+            <if test="parkingTime != null">#{parkingTime},</if>
+            <if test="department != null">#{department},</if>
+            <if test="interviewee != null">#{interviewee},</if>
+            <if test="reason != null">#{reason},</if>
+            <if test="visitDate != null">#{visitDate},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="status != null">#{status},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBizVisitor" parameterType="BizVisitor">
+        update biz_visitor
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="uuid != null and uuid != ''">uuid = #{uuid},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="phoneNumber != null">phone_number = #{phoneNumber},</if>
+            <if test="workplace != null">workplace = #{workplace},</if>
+            <if test="idNumber != null">id_number = #{idNumber},</if>
+            <if test="licensePlate != null">license_plate = #{licensePlate},</if>
+            <if test="parkingTime != null">parking_time = #{parkingTime},</if>
+            <if test="department != null">department = #{department},</if>
+            <if test="interviewee != null">interviewee = #{interviewee},</if>
+            <if test="reason != null">reason = #{reason},</if>
+            <if test="visitDate != null">visit_date = #{visitDate},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="status != null">status = #{status},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBizVisitorById" parameterType="Long">
+        delete from biz_visitor where id = #{id}
+    </delete>
+
+    <delete id="deleteBizVisitorByIds" parameterType="String">
+        delete from biz_visitor where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
