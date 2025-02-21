@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>访问登记详情</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      background-color: #1a73e8;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .header p {
+      font-size: 14px;
+      margin: 5px 0 0;
+    }
+    .detail-item {
+      margin-bottom: 20px;
+    }
+    .detail-item label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .detail-item span {
+      display: block;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>访问登记详情</h1>
+    </div>
+
+    <div class="form-container">
+      <div class="detail-item">
+        <label>姓名</label>
+        <span th:text="${name}"></span>
+      </div>
+      <div class="detail-item">
+        <label>手机号</label>
+        <span th:text="${phoneNumber}"></span>
+      </div>
+      <div class="detail-item">
+        <label>工作单位</label>
+        <span th:text="${workplace}"></span>
+      </div>
+      <div class="detail-item">
+        <label>证件号码</label>
+        <span th:text="${idNumber}"></span>
+      </div>
+      <div class="detail-item">
+        <label>车牌号</label>
+        <span th:text="${licensePlate}"></span>
+      </div>
+      <div class="detail-item">
+        <label>停车时间</label>
+        <span th:text="${parkingTime}"></span>
+      </div>
+      <div class="detail-item">
+        <label>访问部门</label>
+        <span th:text="${department}"></span>
+      </div>
+      <div class="detail-item">
+        <label>被访人</label>
+        <span th:text="${interviewee}"></span>
+      </div>
+      <div class="detail-item">
+        <label>访问事由</label>
+        <span th:text="${reason}"></span>
+      </div>
+      <div class="detail-item">
+        <label>访问日期</label>
+        <span th:text="${visitDate}"></span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
